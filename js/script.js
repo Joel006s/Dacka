@@ -45,7 +45,7 @@ const mainMenu = () => {
 
   let busqueda = document.createElement("div");
   busqueda.style.position = "relative"
-  busqueda.style.top = "100px"
+  busqueda.style.top = "10px"
 
   busqueda.innerHTML = `
         <div class="barra">
