@@ -45,10 +45,10 @@ const mainMenu = () => {
 
   let busqueda = document.createElement("div");
   busqueda.style.position = "relative"
-  busqueda.style.top = "10px"
+  busqueda.style.top = "100px"
 
   busqueda.innerHTML = `
-        <div class="barra">
+        <div class="barra" style="position: relative; top: -100px;">
             <section> <i class="fa-solid fa-magnifying-glass"></i> </section>
             <input type="search" placeholder="¿Qué necesita buscar?">
         </div>
