@@ -52,7 +52,7 @@ const mainMenu = () => {
             <section> <i class="fa-solid fa-magnifying-glass"></i> </section>
             <input type="search" placeholder="¿Qué necesita buscar?">
         </div>
-        <h1>
+        <h1 style="position: relative; top: -100px;">
             <span id="titulo1">Conocé más sobre</span>
             <span id="titulo2">productos aquí</span> 
             <center><a href="#subtitulo"><i class="fa-solid fa-angle-down" id="flecha"></i></a></center>
