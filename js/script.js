@@ -44,6 +44,9 @@ const mainMenu = () => {
   });
 
   let busqueda = document.createElement("div");
+  busqueda.style.position = "relative"
+  busqueda.style.top = "100px"
+
   busqueda.innerHTML = `
         <div class="barra">
             <section> <i class="fa-solid fa-magnifying-glass"></i> </section>
@@ -293,14 +296,45 @@ const mostrarCarrito = () => {
     finalizar.className = "boton-agregar";
     finalizar.style.marginTop = "15px";
     finalizar.addEventListener('click', () => {
-      alert('¡Gracias por tu compra!');
-      localStorage.removeItem('carrito');
-      document.getElementById("acum").innerHTML = 0;
-      acum = 0;
-      contenedor.classList.remove("visible");
+      // Ocultar contenido actual y mostrar formulario de tarjeta
+      contenedor.innerHTML = '';
+      let form = document.createElement('form');
+      form.className = 'form-tarjeta';
+      form.innerHTML = `
+        <h2>Datos de la tarjeta</h2>
+        <label>Nombre en la tarjeta:<br><input type="text" name="nombre" required></label><br>
+        <label>Número de tarjeta:<br><input type="text" name="numero" maxlength="19" pattern="[0-9 ]{16,19}" required></label><br>
+        <label>Vencimiento:<br><input type="text" name="vencimiento" placeholder="MM/AA" maxlength="5" required></label><br>
+        <label>CVV:<br><input type="password" name="cvv" maxlength="4" pattern="[0-9]{3,4}" required></label><br>
+        <button type="submit" class="boton-agregar" style="margin-top:15px;">Confirmar compra</button>
+      `;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('¡Gracias por tu compra!');
+        localStorage.removeItem('carrito');
+        document.getElementById("acum").innerHTML = 0;
+        acum = 0;
+        contenedor.classList.remove("visible");
+        setTimeout(() => {
+          document.getElementById("desplegable").innerHTML = "";
+        }, 350);
+      });
+      contenedor.appendChild(form);
+      // Botón para cerrar el formulario
+      let cerrarForm = document.createElement('button');
+      cerrarForm.textContent = '✖';
+      cerrarForm.className = 'cerrar-modal';
+      cerrarForm.type = 'button';
+      cerrarForm.addEventListener('click', () => {
+        contenedor.classList.remove('visible');
+        setTimeout(() => {
+          document.getElementById('desplegable').innerHTML = '';
+        }, 350);
+      });
+      contenedor.appendChild(cerrarForm);
       setTimeout(() => {
-        document.getElementById("desplegable").innerHTML = "";
-      }, 350);
+        contenedor.classList.add('visible');
+      }, 10);
     });
     contenedor.appendChild(finalizar);
     // Eliminar producto
