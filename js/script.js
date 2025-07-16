@@ -16,19 +16,12 @@ const cart = [
   { subtitle: "card numero cinco", name: "remera", price: "18,000", class: "fnd5" },
   { subtitle: "card numero seis", name: "short", price: "18,000", class: "fnd6" },
 ];
-
 // HERO
 const mainMenu = () => {
   let image = document.createElement("div");
   image.innerHTML = `<img src="img/dacka-logo2.png" alt="${mainArray[0].title}" width="130px" style="margin: 10px;">`;
   document.getElementById("header").appendChild(image);
-
-  // Botón hamburguesa
-  let btnHamburguesa = document.createElement("button");
-  btnHamburguesa.className = "menu-hamburguesa";
-  btnHamburguesa.innerHTML = '<i class="fa-solid fa-bars"></i>';
-  document.getElementById("header").appendChild(btnHamburguesa);
-
+ 
   let head = document.createElement("nav");
   head.innerHTML = `
         <a href="#" class="navBar">${mainArray[0].elemento1}</a>
@@ -38,10 +31,7 @@ const mainMenu = () => {
     `;
   document.getElementById("header").appendChild(head);
 
-  // Evento para mostrar/ocultar el menú hamburguesa
-  btnHamburguesa.addEventListener('click', function() {
-    head.classList.toggle('abierto');
-  });
+  
 
   let busqueda = document.createElement("div");
   busqueda.style.position = "relative"
@@ -119,15 +109,30 @@ const desplegable = (producto) => {
   // Crear los elementos de detalle
   let nombre = document.createElement("h2");
   nombre.textContent = `Producto: ${producto.name}`;
-  let talle = document.createElement("h3");
-  talle.innerHTML = `Talle: 
-  <div class="talle-selector">
-    <div class="talle-option" data-talle="XS" id="talle1">XS</div>
-    <div class="talle-option" data-talle="S" id="talle2">S</div>
-    <div class="talle-option" data-talle="M" id="talle3">M</div>
-    <div class="talle-option" data-talle="L" id="talle4">L</div>
-    <div class="talle-option" data-talle="XL" id="talle5">XL</div>
-  </div>`;
+
+  // Condición para mostrar talles diferentes si es Zapatilla
+  let talle;
+  if (producto.name.toLowerCase() === "zapatilla") {
+    talle = document.createElement("h3");
+    talle.innerHTML = `Talle: 
+      <div class="talle-selector">
+        <div class="talle-option" data-talle="38" id="talle1">38</div>
+        <div class="talle-option" data-talle="39" id="talle2">39</div>
+        <div class="talle-option" data-talle="40" id="talle3">40</div>
+        <div class="talle-option" data-talle="41" id="talle4">41</div>
+        <div class="talle-option" data-talle="42" id="talle5">42</div>
+      </div>`;
+  } else {
+    talle = document.createElement("h3");
+    talle.innerHTML = `Talle: 
+      <div class="talle-selector">
+        <div class="talle-option" data-talle="XS" id="talle1">XS</div>
+        <div class="talle-option" data-talle="S" id="talle2">S</div>
+        <div class="talle-option" data-talle="M" id="talle3">M</div>
+        <div class="talle-option" data-talle="L" id="talle4">L</div>
+        <div class="talle-option" data-talle="XL" id="talle5">XL</div>
+      </div>`;
+  }
   let precio = document.createElement("h2");
   precio.textContent = `$${producto.price}`;
   let description = document.createElement("p");
