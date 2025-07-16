@@ -21,27 +21,43 @@ const mainMenu = () => {
   let image = document.createElement("div");
   image.innerHTML = `<img src="img/dacka-logo2.png" alt="${mainArray[0].title}" width="130px" style="margin: 10px;">`;
   document.getElementById("header").appendChild(image);
- 
+
+  // Botón menú hamburguesa (solo se muestra en móviles)
+  let btnMenu = document.createElement("button");
+  btnMenu.className = "menu-hamburguesa";
+  btnMenu.id = "btnMenu";
+  btnMenu.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  document.getElementById("header").appendChild(btnMenu);
+
   let head = document.createElement("nav");
   head.innerHTML = `
         <a href="#" class="navBar">${mainArray[0].elemento1}</a>
         <a href="#" class="navBar">${mainArray[0].elemento2}</a>
         <a href="#twitter" class="navBar">${mainArray[0].elemento3}</a>
         <a href="#" class="navBar">${mainArray[0].elemento4}</a>
+        <div class="barra" style="position: relative; top: 0;">
+            <section> <i class="fa-solid fa-magnifying-glass"></i> </section>
+            <input type="search" placeholder="¿Qué necesita buscar?">
+        </div>
     `;
   document.getElementById("header").appendChild(head);
 
-  
+  // Lógica para mostrar/ocultar menú hamburguesa en móviles
+  setTimeout(() => {
+    const btnMenu = document.getElementById("btnMenu");
+    const nav = document.querySelector("nav");
+    if (btnMenu && nav) {
+      btnMenu.addEventListener("click", function() {
+        nav.classList.toggle("abierto");
+      });
+    }
+  }, 100);
 
   let busqueda = document.createElement("div");
   busqueda.style.position = "relative"
   busqueda.style.top = "100px"
 
   busqueda.innerHTML = `
-        <div class="barra" style="position: relative; top: -100px;">
-            <section> <i class="fa-solid fa-magnifying-glass"></i> </section>
-            <input type="search" placeholder="¿Qué necesita buscar?">
-        </div>
         <h1 style="position: relative; top: -100px;">
             <span id="titulo1">Conocé más sobre</span>
             <span id="titulo2">productos aquí</span> 
