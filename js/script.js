@@ -35,8 +35,8 @@ const mainMenu = () => {
         <a href="#" class="navBar">${mainArray[0].elemento2}</a>
         <a href="#twitter" class="navBar">${mainArray[0].elemento3}</a>
         <a href="#" class="navBar">${mainArray[0].elemento4}</a>
-        <div class="barra" style="position: relative; top: 0;">
-            <section> <i class="fa-solid fa-magnifying-glass"></i> </section>
+        <div class="barra">
+            <i class="fa-solid fa-magnifying-glass"></i>
             <input type="search" placeholder="¿Qué necesita buscar?">
         </div>
     `;
@@ -205,14 +205,16 @@ const desplegable = (producto) => {
 const acercaDe = () => {
   let acerca = document.createElement("div");
   acerca.innerHTML = `
-  <h2>Acerca de <span id="acercaDe"><em>Dacka</em></span></h2>
+  <h2 class="acerca-de">Acerca de <span id="acercaDe">Dacka</span></h2>
   `;
   document.getElementById("acercaDe").appendChild(acerca);
   let links = document.createElement("div");
   links.innerHTML = `
+  <section id="lkin">
   <a href="#" class="link" id="instagram"><i class="fa-brands fa-instagram"></i>Instagram</a>
   <a href="#" class="link" id="facebook"><i class="fa-brands fa-facebook"></i>Facebook</a>
-  <a href="#" class="link" id="twitter"><i class="fa-brands fa-twitter"></i>Twitter</a>
+  </section>
+  <a href="#" class="link" id="twitter"><i class="fa-brands fa-x-twitter"></i>Twitter</a>
   `;
   links.style.display = "flex";
   links.style.gap = "10px"; 

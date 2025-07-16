@@ -112,23 +112,58 @@ input::placeholder {
   pointer-events: none;
 }
 
+/* --- BARRA DE BÚSQUEDA PROFESIONAL --- */
 .barra {
   display: flex;
-  border: 0.2px solid;
-  border-radius: 3px;
-  width: 300px;
-  margin: 22px 10px;
-  padding: 2px;
-  color: rgb(95, 91, 91);
-  background-color: white;
+  align-items: center;
+  width: 320px;
+  background: #fff;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  padding: 4px 16px;
+  border: none;
+  transition: box-shadow 0.2s;
+  position: relative;
+}
+.barra:focus-within {
+  box-shadow: 0 4px 16px rgba(48,46,96,0.18);
+}
+.barra input[type="search"] {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+  padding: 10px 10px 10px 36px;
+  border-radius: 30px;
+  color: #333;
+  transition: background 0.2s;
+}
+.barra input[type="search"]::placeholder {
+  color: #b0b0b0;
+  font-style: italic;
+  font-size: 0.98rem;
+  letter-spacing: 0.5px;
+}
+.barra .fa-magnifying-glass {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #b0b0b0;
+  font-size: 1.2rem;
+  pointer-events: none;
 }
 
-.fa-magnifying-glass {
-  position: relative;
-  top: 4px;
-  width: 20px;
-  margin-left: 3px;
-  margin-right: 4px;
+/* Elimina estilos antiguos de la barra e input */
+input[type="search"] {
+  border: none !important;
+  width: 100%;
+  background: transparent;
+  box-shadow: none;
+}
+input[type="search"]:focus {
+  outline: none;
 }
 
 #titulo1 {
@@ -804,22 +839,29 @@ main {
 /* Laptops (pantallas hasta 1024px) */
 @media (max-width: 1800px) {
   header {
-    height: 53.9rem;
+    height: 40rem;
   }
 
   .barra {
     position: relative;
-    top: 5px;
-    left: 25rem;
+    margin-top: -30px;
+    left: 35rem;
   }
 
   .fa-cart-shopping {
     margin: 33px -200px 0px 35rem;
   }
 
+  
+
   h1 {
     position: relative;
-    left: 20rem;
+    left: 11rem;
+  }
+
+  #flecha {
+    position: relative;
+    left: 60px;
   }
 
   .navBar {
@@ -982,20 +1024,28 @@ main {
     font-size: 1.54rem;
   }
 
+  .navBar {
+    font-size: 18px;
+  }
+
+  .acerca-de {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  }
+
   #acercaDe {
-    font-family: "Times New Roman", Times, serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 20px;
     position: relative;
     top: 170px;
-    left: 47rem;
-    font-size: 20px;
+    left: 37rem;
+    font-size: 10px;
   }
 
   #acercaDe span {
     position: relative;
-    font-size: 40px;
+    font-size: 30px;
     top: 30px;
-    left: -125px;
+    left: -130px;
   }
 
   .links {
@@ -1038,6 +1088,48 @@ main {
 
   header>* {
     margin: 0 auto !important;
+  }
+
+  .acerca-de {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  #acercaDe {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 20px;
+    position: relative;
+    top: 80px;
+    left: 8rem;
+    font-size: 10px;
+  }
+
+  #acercaDe span {
+    position: relative;
+    font-size: 30px;
+    top: 30px;
+    left: -110px;
+  }
+
+  .links {
+    margin-top: 30px;
+    margin-right: 230px;
+    
+  }
+  #lkin {
+    display: grid;
+    grid-template-columns: 190px 120px;
+  }
+
+  .link {
+    position: relative;
+    font-size: 15px;
+    top: -120px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .link:hover {
+    color: #000;
   }
 
   nav {
@@ -1118,9 +1210,11 @@ main {
   }
 
   #flecha {
-    margin: 15rem auto;
+    margin: 15rem;
     text-align: center;
     font-size: 3rem;
+    position: relative;
+    left: 1px;
   }
 
   #cards {
